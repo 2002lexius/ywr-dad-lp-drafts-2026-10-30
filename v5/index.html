@@ -24,7 +24,7 @@
   --white:#fff;
 }
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);overflow-x:hidden;
   font-family:Lato,Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 .draft{position:sticky;top:0;z-index:50;background:#E56A5F;color:#fff;text-align:center;
   font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:7px 10px}
@@ -195,71 +195,318 @@ h1 .bold{display:block;color:var(--white);font-size:1.08em}
   .sticky{font-size:12.5px;padding:10px 12px}
 }
 
-.amazon-strip{margin:0 0 28px}
-.amz-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.amz-card{display:block;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:14px;padding:18px 18px 16px;
-  text-decoration:none;color:inherit;box-shadow:0 4px 14px rgba(14,32,56,.04)}
-.amz-name{font-family:"Bricolage Grotesque",Lato,sans-serif;font-weight:800;font-size:18px;color:var(--navy);margin:0 0 8px}
-.amz-stars{color:var(--gold);letter-spacing:1px;font-size:16px;margin:0 0 4px}
-.amz-avg{font-size:16px;font-weight:700;color:var(--navy);margin:0 0 2px}
-.amz-count{font-size:15px;font-weight:700;color:var(--rock);margin:0 0 10px}
-.amz-note{font-size:12.5px;line-height:1.4;color:var(--muted);font-weight:600}
-@media (max-width:900px){.amz-cards{grid-template-columns:1fr}}
+
+
+
+
+
+
+
+
+@media (max-width:900px){}
+
+.product-frame{position:relative;display:inline-block;width:100%;max-width:560px;line-height:0}
+.product-frame img{width:100%;height:auto;display:block;border-radius:18px;
+  box-shadow:0 28px 60px rgba(0,0,0,.4);object-fit:contain}
+.bestseller-badge{
+  position:absolute;z-index:3;
+  left:2%; top:3%;
+  width:118px;height:118px;border-radius:50%;
+  background:radial-gradient(circle at 35% 28%, #3BA3E0 0%, #25649F 45%, #0E2038 100%);
+  border:3px solid #F59E0B;
+  box-shadow:0 10px 28px rgba(0,0,0,.4);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:8px;color:#fff;
+  font-family:"Bricolage Grotesque",Lato,sans-serif;
+  line-height:1.05;
+  transform:rotate(-8deg);
+}
+.bestseller-badge .bs-top{
+  font-weight:800;font-size:28px;color:#F59E0B;letter-spacing:-.02em;line-height:1;
+}
+.bestseller-badge .bs-mid{
+  font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  color:#fff;margin-top:2px;
+}
+.bestseller-badge .bs-bot{
+  font-weight:700;font-size:10px;color:#EAF2FA;margin-top:2px;letter-spacing:.02em;
+}
+.buy-visual .product-frame{max-width:420px}
+.buy-visual .product-frame img{box-shadow:0 18px 40px rgba(0,0,0,.4);border-radius:14px}
+.buy-visual .bestseller-badge{width:104px;height:104px;left:0;top:0}
+.buy-visual .bestseller-badge .bs-top{font-size:24px}
+.buy-visual .bestseller-badge .bs-mid{font-size:10px}
+.buy-visual .bestseller-badge .bs-bot{font-size:9px}
+/* hero-visual img rules moved to .product-frame — neutralize old direct img rules overlap */
+.hero-visual{display:grid;place-items:center}
+.buy-visual{display:grid;place-items:center}
+@media (max-width:900px){
+  .bestseller-badge{width:92px;height:92px;left:1%;top:2%}
+  .bestseller-badge .bs-top{font-size:22px}
+  .bestseller-badge .bs-mid{font-size:9px;letter-spacing:.04em}
+  .bestseller-badge .bs-bot{font-size:9px}
+  .product-frame{max-width:100%}
+  .product-frame img{border-radius:14px}
+  .buy-visual .bestseller-badge{width:88px;height:88px}
+}
+@media (max-width:400px){
+  .bestseller-badge{width:84px;height:84px}
+  .bestseller-badge .bs-top{font-size:20px}
+  .bestseller-badge .bs-mid{font-size:8.5px}
+  h1{font-size:clamp(28px,7.5vw,36px);overflow-wrap:anywhere}
+  .checks li{font-size:15.5px;overflow-wrap:anywhere}
+  .cta{font-size:16px;padding:15px 16px;max-width:100%}
+  .sticky{font-size:12px;padding:10px 10px;gap:6px 8px}
+  .sticky .tiers{gap:4px 8px}
+  .kit .name,.kit .meta{overflow-wrap:anywhere}
+}
+
+
+/* ===== v5 hero layout: desktop 2-col / mobile Mars order ===== */
+.hero{padding:48px 56px 56px}
+.hero-grid{
+  max-width:1200px;margin:0 auto;
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
+  grid-template-areas:
+    "trust visual"
+    "h1 visual"
+    "checks visual"
+    "cta visual";
+  gap:12px 40px;
+  align-items:center;
+}
+.hero-grid > .trust{grid-area:trust; align-self:end; margin:0 0 8px}
+.hero-grid > h1{grid-area:h1; margin:0 0 12px}
+.hero-grid > .checks{grid-area:checks; margin:8px 0 16px}
+.hero-grid > .hero-cta-wrap{grid-area:cta; align-self:start}
+.hero-grid > .hero-visual{grid-area:visual; display:grid; place-items:center; align-self:center}
+.hero-cta-wrap .cta{width:100%;max-width:420px}
+.hero-visual .product-frame{width:100%;max-width:560px}
+.hero-visual .product-frame img{width:100%;height:auto;display:block;border-radius:18px;
+  box-shadow:0 28px 60px rgba(0,0,0,.4);object-fit:contain}
+
+@media (max-width:640px){
+  .hero{padding:20px 0 28px} /* side padding only on text, image full bleed */
+  .hero-grid{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "trust"
+      "h1"
+      "visual"
+      "checks"
+      "cta";
+    gap:14px;
+    max-width:none;
+    padding:0;
+  }
+  .hero-grid > .trust,
+  .hero-grid > h1,
+  .hero-grid > .checks,
+  .hero-grid > .hero-cta-wrap{
+    padding-left:16px;padding-right:16px;
+  }
+  .hero-grid > .trust{margin:0;text-align:left}
+  .hero-grid > h1{
+    font-size:clamp(30px,8.5vw,40px);
+    margin:0;
+    text-align:left;
+  }
+  /* FULL WIDTH large mockup — not shrunk */
+  .hero-grid > .hero-visual{
+    width:100%;
+    max-width:none;
+    margin:4px 0 2px;
+    padding:0;
+  }
+  .hero-visual .product-frame{
+    max-width:none !important;
+    width:100% !important;
+    display:block;
+  }
+  .hero-visual .product-frame img{
+    width:100% !important;
+    max-width:none !important;
+    border-radius:0;
+    box-shadow:none;
+  }
+  .hero-visual .bestseller-badge{
+    left:4%;
+    top:6%;
+    width:96px;height:96px;
+    transform:rotate(-8deg);
+  }
+  .hero-visual .bestseller-badge .bs-top{font-size:24px}
+  .hero-visual .bestseller-badge .bs-mid{font-size:9.5px}
+  .hero-visual .bestseller-badge .bs-bot{font-size:9px}
+  .hero-grid > .checks{margin:4px 0 8px}
+  .hero-grid > .checks li{font-size:16px}
+  .hero-cta-wrap .cta{
+    max-width:none;
+    width:100%;
+    font-size:17px;
+    padding:16px 18px;
+  }
+}
+@media (max-width:400px){
+  .hero-visual .bestseller-badge{width:88px;height:88px;left:3%;top:5%}
+  .hero-visual .bestseller-badge .bs-top{font-size:22px}
+  .hero-grid > h1{font-size:clamp(28px,8vw,36px)}
+}
+
+
+/* ===== Kit tiles (live lander style, no strikethrough) ===== */
+.kits{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 22px;
+}
+.kit{
+  position:relative;display:flex;flex-direction:column;gap:8px;
+  background:#fff;color:var(--navy);
+  border:1.5px solid rgba(14,32,56,.14);border-radius:14px;
+  padding:14px 12px 12px;cursor:pointer;text-align:left;
+  box-shadow:0 2px 10px rgba(14,32,56,.04);
+}
+.kit input{position:absolute;opacity:0;pointer-events:none}
+.kit-radio{
+  position:absolute;top:12px;left:12px;width:18px;height:18px;border-radius:50%;
+  border:2px solid #9AA7B8;background:#fff;z-index:2;
+}
+.kit:has(input:checked), .kit.pick:has(input:checked){
+  border-color:#25649F;border-width:2.5px;
+  box-shadow:0 0 0 3px rgba(37,100,159,.18);
+}
+.kit:has(input:checked) .kit-radio{
+  border-color:#25649F;background:#25649F;
+  box-shadow:inset 0 0 0 3px #fff;
+}
+.kit .our-pick{
+  position:absolute;top:-9px;left:50%;transform:translateX(-50%);
+  background:#F3BD43;color:#0E2038;font-size:10px;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 10px;border-radius:999px;white-space:nowrap;z-index:2;
+}
+.kit-covers{
+  display:flex;align-items:flex-end;justify-content:center;
+  gap:2px;min-height:72px;margin:6px 8px 0;padding-top:4px;
+}
+.kit-covers img{
+  height:72px;width:auto;object-fit:contain;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,.18));
+  border-radius:2px;
+}
+.kit-covers[data-n="4"] img{height:64px}
+.kit-covers[data-n="6"] img{height:56px}
+.kit-text{display:flex;flex-direction:column;gap:2px;padding:0 4px}
+.kit-name{font-family:"Bricolage Grotesque",Lato,sans-serif;font-weight:800;font-size:15px;line-height:1.15;color:var(--navy)}
+.kit-sub{font-size:12px;font-weight:600;color:#6B6862}
+.kit-price-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:0 4px}
+.kit-price{font-family:"Bricolage Grotesque",Lato,sans-serif;font-weight:800;font-size:22px;color:var(--navy);line-height:1}
+.kit-save{
+  display:inline-block;background:#E8F0E4;color:#2E682A;
+  font-size:12px;font-weight:800;padding:3px 8px;border-radius:999px;
+}
+.kit-tag{font-size:13px;font-weight:800;color:var(--navy);line-height:1.25;padding:0 4px 2px}
+/* buy section was dark — lighten tile area context */
+.buy-copy .kits{margin-top:4px}
+@media (max-width:900px){
+  .kits{grid-template-columns:1fr 1fr;gap:8px}
+  .kit{padding:12px 10px 10px}
+  .kit-name{font-size:13.5px}
+  .kit-price{font-size:20px}
+  .kit-covers img{height:58px}
+  .kit-covers[data-n="4"] img{height:52px}
+  .kit-covers[data-n="6"] img{height:44px}
+  .kit-tag{font-size:12px}
+}
+@media (max-width:400px){
+  .kit-sub{font-size:11px}
+  .kit-save{font-size:11px;padding:2px 6px}
+}
+
+.kits-legend{font-family:"Bricolage Grotesque",Lato,sans-serif;font-weight:800;font-size:16px;color:#fff;margin:0 0 12px}
+
+
+/* Lexi hook + all-white H1 */
+.hero-hook{
+  grid-area: hook;
+  font-family:"Bricolage Grotesque",Lato,sans-serif;
+  font-weight:800;
+  font-size:clamp(22px,2.8vw,28px);
+  line-height:1.15;
+  letter-spacing:-.02em;
+  color:#25649F; /* Rock Blue */
+  margin:0 0 6px;
+}
+.hero-grid > h1{
+  color:#fff;
+}
+.hero-grid > h1 .h1-line{
+  display:block;
+  color:#fff !important;
+  font-weight:800;
+}
+.hero-grid > h1 .accent,
+.hero-grid > h1 .bold{
+  color:#fff !important;
+  display:block;
+}
+/* desktop grid areas include hook */
+.hero-grid{
+  grid-template-areas:
+    "trust visual"
+    "hook visual"
+    "h1 visual"
+    "checks visual"
+    "cta visual" !important;
+}
+.hero-grid > .hero-hook{grid-area:hook; align-self:end}
+.hero-grid > h1{grid-area:h1}
+
+@media (max-width:640px){
+  .hero-grid{
+    grid-template-areas:
+      "trust"
+      "hook"
+      "h1"
+      "visual"
+      "checks"
+      "cta" !important;
+  }
+  .hero-grid > .hero-hook{
+    padding-left:16px;padding-right:16px;
+    font-size:clamp(20px,5.6vw,24px);
+    margin:0;
+  }
+}
 </style>
 </head>
 <body>
 <div class="draft">Draft mockup · not live · v5 Mars order</div>
 <section aria-label="Product headline" class="hero" id="top">
-<div class="hero-grid">
-<div class="hero-copy">
-<p class="trust">
+<div class="hero-grid"><p class="trust">
 <span aria-hidden="true" class="stars">★★★★★</span>
 <span>4.56/5</span><span class="sep">·</span>
 <span>270,000+</span><span class="sep">·</span>
 <span>Best-selling series</span>
-</p>
-<h1>
-<span class="accent">Feel ready for fatherhood</span>
-<span class="bold">in under 2 hours</span>
-</h1>
-<ul class="checks">
+</p><p class="hero-hook">Terrified you're not ready?</p><h1><span class="h1-line">Feel ready for fatherhood</span><span class="h1-line">in under 2 hours</span></h1><div class="hero-visual">
+<div class="product-frame">
+<div aria-label="#1 Best Seller on Amazon" class="bestseller-badge">
+<span class="bs-top">#1</span>
+<span class="bs-mid">BEST SELLER</span>
+<span class="bs-bot">on Amazon</span>
+</div>
+<img alt="You Will Rock as a Dad and You Will Rock as a Mom book mockup on sky background" height="960" src="assets/hero-dad-mom-mockup.png" width="960"/></div>
+</div><ul class="checks">
 <li><span aria-hidden="true" class="mark">✓</span><span>A guide for each of you. Yes, Dad too.</span></li>
 <li><span aria-hidden="true" class="mark">✓</span><span>Short chapters you’ll actually finish tonight.</span></li>
 <li><span aria-hidden="true" class="mark">✓</span><span>FREE Dad eBook + 3 workbooks with every kit.</span></li>
-</ul>
-<a class="cta" href="#buy">Get the Dad + Mom Kit · $28 →</a>
-<p class="cta-note"><span aria-hidden="true" class="shield">✓</span> Includes a FREE Dad eBook + 3 workbooks</p>
-</div>
-<div class="hero-visual">
-<img alt="You Will Rock as a Dad and You Will Rock as a Mom book mockup on sky background" height="960" src="assets/hero-dad-mom-mockup.png" width="960"/>
-</div>
-</div>
+</ul><div class="hero-cta-wrap"><a class="cta" href="#buy">Get the Dad + Mom Kit · $28 →</a></div></div>
 </section>
 <section aria-label="Case studies" class="case" id="case">
 <div class="case-inner">
 <p class="kicker">Real couples · Real books</p>
 <h2>See How 270,000+ Couples Are Feeling Ready for Baby</h2>
 <div class="banner">Over <span>270,000</span> parents refused to wing it</div>
-<div class="amazon-strip" id="amazon-ratings-strip">
-<div class="section-label">Amazon ratings · as listed on Amazon</div>
-<div class="amz-cards">
-<a class="amz-card" href="https://www.amazon.com/dp/B0BNGRZC4Z" rel="noopener noreferrer" target="_blank">
-<div class="amz-name">You Will Rock As a Dad!</div>
-<div aria-hidden="true" class="amz-stars">★★★★★</div>
-<div class="amz-avg"><strong>4.6 out of 5</strong></div>
-<div class="amz-count">1,157 global ratings</div>
-<div class="amz-note">Individual Amazon review quotes could not be loaded (Amazon sign-in wall). Rating count shown exactly as listed on the product page.</div>
-</a>
-<a class="amz-card" href="https://www.amazon.com/dp/B0FRXQ7CTR" rel="noopener noreferrer" target="_blank">
-<div class="amz-name">You Will Rock As a Mom!</div>
-<div aria-hidden="true" class="amz-stars">★★★★☆</div>
-<div class="amz-avg"><strong>4.4 out of 5</strong></div>
-<div class="amz-count">309 global ratings</div>
-<div class="amz-note">Individual Amazon review quotes could not be loaded (Amazon sign-in wall). Rating count shown exactly as listed on the product page.</div>
-</a>
-</div>
-</div>
-
 <div class="section-label">Customers with the books</div>
 <div class="ugc-grid"><figure class="ugc"><img alt="Dad with Dad Vol. 1" loading="eager" src="assets/proof/grid/01-dad-beard-dadvol1.jpg"/><figcaption>Dad with Dad Vol. 1</figcaption></figure>
 <figure class="ugc"><img alt="Reader with The Dad Picture Book" loading="eager" src="assets/proof/grid/02-woman-picturebook.jpg"/><figcaption>Reader with The Dad Picture Book</figcaption></figure>
@@ -299,7 +546,13 @@ h1 .bold{display:block;color:var(--white);font-size:1.08em}
 <section aria-label="Buy the kit" class="buy" id="buy">
 <div class="buy-inner">
 <div class="buy-visual">
-<img alt="Dad + Mom Kit book mockup" src="assets/hero-dad-mom-mockup.png"/>
+<div class="product-frame">
+<div aria-label="#1 Best Seller on Amazon" class="bestseller-badge">
+<span class="bs-top">#1</span>
+<span class="bs-mid">BEST SELLER</span>
+<span class="bs-bot">on Amazon</span>
+</div>
+<img alt="Dad + Mom Kit book mockup" src="assets/hero-dad-mom-mockup.png"/></div>
 </div>
 <div class="buy-copy">
 <h2>Feel ready for <span class="hi">fatherhood</span> in under 2 hours</h2>
@@ -314,11 +567,81 @@ h1 .bold{display:block;color:var(--white);font-size:1.08em}
 <li><span class="mark">✓</span><span>3 free workbooks: hospital pack, support pack, first-week team plan</span></li>
 <li><span class="mark">✓</span><span>Read by 270,000+ couples · Best-selling series</span></li>
 </ul>
-<div aria-label="Kit options" class="kits">
-<div class="kit"><p class="name">Dad Volume 1</p><p class="meta">1 book · pregnancy &amp; birth</p><p class="price">$21</p></div>
-<div class="kit pick"><span class="badge">Our pick</span><p class="name">Dad + Mom Kit</p><p class="meta">2 books · Dad eBook</p><p class="price">$28</p></div>
-<div class="kit"><p class="name">Pregnancy &amp; Beyond</p><p class="meta">4 books · bump to toddler</p><p class="price">$49</p></div>
-<div class="kit"><p class="name">Bump to Potty Kit</p><p class="meta">6 books · every freebie</p><p class="price">$69</p></div>
+<p class="kits-legend">How ready do you want to be?</p><div aria-label="How ready do you want to be?" class="kits" role="radiogroup">
+<label class="kit">
+<input name="kit" type="radio" value="dad1"/>
+<span aria-hidden="true" class="kit-radio"></span>
+<span class="kit-covers" data-n="1">
+<img alt="Dad Volume 1 cover" src="assets/kits/perf-book-vol1-webp-320.webp"/>
+</span>
+<span class="kit-text">
+<strong class="kit-name">Dad Volume 1</strong>
+<span class="kit-sub">1 book · pregnancy &amp; birth</span>
+</span>
+<span class="kit-price-row">
+<span class="kit-price">$21</span>
+<span class="kit-save">Save $7</span>
+</span>
+<span class="kit-tag">Walk into the delivery room ready.</span>
+</label>
+<label class="kit pick">
+<input checked="" name="kit" type="radio" value="dadmom"/>
+<span aria-hidden="true" class="kit-radio"></span>
+<span class="kit-covers" data-n="2">
+<img alt="Dad Volume 1 cover" src="assets/kits/perf-book-vol1-webp-320.webp"/>
+<img alt="Mom Volume 1 cover" src="assets/kits/perf-book-mom-v1-webp-320.webp"/>
+</span>
+<span class="kit-text">
+<strong class="kit-name">Dad + Mom Kit</strong>
+<span class="kit-sub">2 books · Dad eBook</span>
+</span>
+<span class="kit-price-row">
+<span class="kit-price">$28</span>
+<span class="kit-save">Save $9</span>
+</span>
+<span class="kit-tag">Pregnancy and birth, both of you.</span>
+</label>
+<label class="kit">
+<input name="kit" type="radio" value="beyond"/>
+<span aria-hidden="true" class="kit-radio"></span>
+<span class="our-pick">Our pick</span>
+<span class="kit-covers" data-n="4">
+<img alt="" src="assets/kits/perf-book-vol1-webp-320.webp"/>
+<img alt="" src="assets/kits/perf-book-mom-v1-webp-320.webp"/>
+<img alt="" src="assets/kits/perf-book-vol2-webp-320.webp"/>
+<img alt="" src="assets/kits/perf-book-vol3-webp-320.webp"/>
+</span>
+<span class="kit-text">
+<strong class="kit-name">Pregnancy &amp; Beyond Kit</strong>
+<span class="kit-sub">4 books · bump to toddler</span>
+</span>
+<span class="kit-price-row">
+<span class="kit-price">$49</span>
+<span class="kit-save">Save $63</span>
+</span>
+<span class="kit-tag">Bump to the toddler years.</span>
+</label>
+<label class="kit">
+<input name="kit" type="radio" value="potty"/>
+<span aria-hidden="true" class="kit-radio"></span>
+<span class="kit-covers" data-n="6">
+<img alt="" src="assets/kits/perf-book-vol1-webp-320.webp"/>
+<img alt="" src="assets/kits/perf-book-mom-v1-webp-320.webp"/>
+<img alt="" src="assets/kits/perf-book-vol2-webp-320.webp"/>
+<img alt="" src="assets/kits/perf-book-vol3-webp-320.webp"/>
+<img alt="" src="assets/kits/perf-book-vol6-webp-320.webp"/>
+<img alt="" src="assets/kits/perf-dad-journal-front-webp-320.webp"/>
+</span>
+<span class="kit-text">
+<strong class="kit-name">Bump to Potty Kit</strong>
+<span class="kit-sub">6 books · every freebie</span>
+</span>
+<span class="kit-price-row">
+<span class="kit-price">$69</span>
+<span class="kit-save">Save $81</span>
+</span>
+<span class="kit-tag">Bump to potty. Done.</span>
+</label>
 </div>
 <a class="cta" href="#buy">Get the Dad + Mom Kit · $28 →</a>
 <p class="cta-note"><span aria-hidden="true" class="shield">✓</span> Includes a FREE Dad eBook + 3 workbooks</p>
