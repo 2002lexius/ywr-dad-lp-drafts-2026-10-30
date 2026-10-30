@@ -1580,9 +1580,10 @@ body.has-sticky-pad{padding-bottom:80px !important}
 <script>
 (function(){
   var sticky = document.querySelector('.sticky');
+  var hero = document.querySelector('#top') || document.querySelector('.hero');
   var heroCta = document.querySelector('.hero-cta-wrap') || document.querySelector('#top .cta');
   var buy = document.querySelector('#buy');
-  if(!sticky || !heroCta) return;
+  if(!sticky || !hero) return;
   function inView(el){
     if(!el) return false;
     var r = el.getBoundingClientRect();
@@ -1590,7 +1591,8 @@ body.has-sticky-pad{padding-bottom:80px !important}
     return r.top < vh && r.bottom > 0;
   }
   function sync(){
-    var hide = inView(heroCta) || inView(buy);
+    // Hide while hero (H1/mockup/CTA) or buy block is on screen — prevents covering fold text
+    var hide = inView(hero) || inView(heroCta) || inView(buy);
     if(hide){ sticky.classList.add('is-hidden'); }
     else { sticky.classList.remove('is-hidden'); }
     document.body.classList.add('has-sticky-pad');
