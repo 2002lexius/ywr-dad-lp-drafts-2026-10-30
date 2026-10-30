@@ -7,4 +7,5 @@ For Lexi → Kyle (Meta) review only.
 - [/b/](./b/) — Variant B — Show up for her
 - [/v5/](./v5/) — v5 Mars order + Lexi hero
 - [/v6/](./v6/) — v6 Lexi OG sections + Mars gallery
-- [/v7/](./v7/) — **v7 buy-block Mars product gallery (latest)**
+- [/v7/](./v7/) — v7 buy-block Mars product gallery
+- [/v8/](./v8/) — **v8 3-slide gallery + lighter hook (latest)**
