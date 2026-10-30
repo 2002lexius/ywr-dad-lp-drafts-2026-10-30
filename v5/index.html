@@ -478,34 +478,352 @@ h1 .bold{display:block;color:var(--white);font-size:1.08em}
     margin:0;
   }
 }
+
+
+/* ========== YWR 3-COLOR SYSTEM (Rock Blue / White / Navy) — Lexi pass ========== */
+:root{
+  --rock:#25649F !important;
+  --rock-hi:#3BA3E0 !important;
+  --navy:#0E2038 !important;
+  --navy2:#050d18 !important;
+  --white:#FFFFFF !important;
+  --gold:#25649F !important; /* neutralize gold → rock */
+  --green:#25649F !important; /* neutralize green → rock */
+}
+
+.trust .stars{color:var(--rock) !important; letter-spacing:2px; font-size:17px}
+.trust{color:#fff; font-size:15px; font-weight:700; text-transform:none}
+.trust .sep{opacity:.5; color:#fff}
+
+.hero-hook{
+  font-family:"Bricolage Grotesque",Lato,sans-serif !important;
+  font-weight:800 !important;
+  font-size:clamp(34px, 4.6vw, 52px) !important;
+  line-height:0.98 !important;
+  letter-spacing:-0.02em !important;
+  text-transform:uppercase !important;
+  color:#25649F !important;
+  margin:0 0 8px !important;
+}
+
+.hero-grid > h1,
+.hero-grid > h1 .h1-line{
+  color:#fff !important;
+  font-size:clamp(36px, 4.8vw, 56px) !important;
+  font-weight:800 !important;
+  line-height:1.02 !important;
+  letter-spacing:-0.03em !important;
+}
+.hero-grid > h1 .h1-line{font-size:inherit !important}
+
+.checks .mark{
+  background:#25649F !important;
+  color:#fff !important;
+  border:none !important;
+}
+.cta, a.cta, .pb-cta, .sticky a, .hero-cta-wrap .cta, .buy .cta{
+  background:#25649F !important;
+  color:#fff !important;
+  box-shadow:0 12px 28px rgba(37,100,159,.38) !important;
+}
+.cta:hover, a.cta:hover{filter:brightness(1.08)}
+
+.cta-note .shield, .buy .cta-note .shield{
+  background:#25649F !important;
+  color:#fff !important;
+}
+
+/* Badge placement — Mars left-edge overlap */
+.product-frame{position:relative}
+svg.bestseller-badge, .bestseller-badge{
+  position:absolute !important;
+  z-index:4 !important;
+  left:-2% !important;
+  top:8% !important;
+  width:140px !important;
+  height:140px !important;
+  transform:none !important;
+  border:none !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  padding:0 !important;
+  display:block !important;
+}
+.buy-visual svg.bestseller-badge{
+  width:118px !important; height:118px !important;
+  left:-4% !important; top:4% !important;
+}
+
+/* Kill leftover gold/green/yellow UI */
+.kit-save{
+  background:rgba(37,100,159,.14) !important;
+  color:#1C4E7C !important;
+}
+.kit .our-pick, .our-pick{
+  background:#25649F !important;
+  color:#fff !important;
+}
+.kit:has(input:checked), .kit.pick:has(input:checked){
+  border-color:#25649F !important;
+  box-shadow:0 0 0 3px rgba(37,100,159,.2) !important;
+}
+.kit:has(input:checked) .kit-radio{
+  border-color:#25649F !important;
+  background:#25649F !important;
+}
+.sticky{background:#050d18 !important}
+.sticky .tag{color:#3BA3E0 !important}
+.sticky a{background:#25649F !important; color:#fff !important}
+.banner{background:#0E2038 !important}
+.banner span{color:#3BA3E0 !important}
+.case .kicker, .timeline .kicker, .step .when{color:#25649F !important}
+.rev-stars, .pb-stars .s, .amz-stars{color:#25649F !important}
+.draft{background:#1C4E7C !important}
+
+@media (max-width:640px){
+  .hero-hook{
+    font-size:clamp(28px, 8.2vw, 36px) !important;
+    padding-left:16px; padding-right:16px;
+  }
+  .hero-grid > h1, .hero-grid > h1 .h1-line{
+    font-size:clamp(30px, 8.5vw, 40px) !important;
+  }
+  svg.bestseller-badge, .bestseller-badge{
+    width:108px !important; height:108px !important;
+    left:2% !important; top:6% !important;
+  }
+}
+@media (max-width:400px){
+  .hero-hook{font-size:clamp(26px, 7.8vw, 32px) !important}
+  svg.bestseller-badge{width:96px !important; height:96px !important}
+}
+
+.trust-score{color:#fff;font-weight:800}
+.trust-vol{color:#fff;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+
+
+/* ===== Buy tiles: never black selected; fit mobile ===== */
+.kit, label.kit, .kit.pick, .kit:has(input:checked), .kit.pick:has(input:checked){
+  background:#FFFFFF !important;
+  color:#0E2038 !important;
+}
+.kit .kit-name, .kit .kit-tag, .kit .kit-price, .kit .kit-sub{
+  color:#0E2038 !important;
+}
+.kit .kit-sub{color:#6B6862 !important}
+.kit:has(input:checked), .kit.pick:has(input:checked){
+  border:2.5px solid #25649F !important;
+  box-shadow:0 0 0 3px rgba(37,100,159,.18) !important;
+  background:#F3F8FC !important; /* subtle light-blue tint */
+}
+.kit:has(input:checked) .kit-radio{
+  border-color:#25649F !important;
+  background:#25649F !important;
+  box-shadow:inset 0 0 0 3px #fff !important;
+}
+.kit .our-pick, .our-pick{
+  background:#25649F !important;
+  color:#fff !important;
+}
+.kit-save{
+  background:rgba(37,100,159,.12) !important;
+  color:#1C4E7C !important;
+}
+.kits{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+  gap:8px !important;
+  width:100% !important;
+  max-width:100% !important;
+  box-sizing:border-box !important;
+}
+.kit{
+  min-width:0 !important;
+  max-width:100% !important;
+  overflow:hidden !important;
+  box-sizing:border-box !important;
+}
+.kit-covers{max-width:100%; overflow:hidden}
+.kit-covers img{max-width:28%; height:auto; max-height:64px}
+.buy, .buy-inner, .buy-copy{max-width:100%; box-sizing:border-box}
+.buy{padding-left:16px !important; padding-right:16px !important; padding-bottom:120px !important}
+.buy-inner{grid-template-columns:1fr !important; gap:24px !important}
+@media (min-width:901px){
+  .buy{padding:56px 48px 120px !important}
+  .buy-inner{grid-template-columns:0.9fr 1.1fr !important}
+}
+
+/* Sticky palette + clearance */
+body{padding-bottom:110px !important}
+.sticky{
+  background:#050d18 !important;
+  color:#fff !important;
+}
+.sticky .tag{color:#3BA3E0 !important}
+.sticky .tier, .sticky .tiers{color:#fff !important}
+.sticky .tier strong{color:#fff !important}
+.sticky a{
+  background:#25649F !important;
+  color:#fff !important;
+}
+
+/* Case study palette */
+.case h2 .hi{color:#25649F !important}
+.case .banner span{color:#3BA3E0 !important}
+.cta, a.cta, .buy .cta, .sticky a{background:#25649F !important; color:#fff !important}
+
+/* Hero mockup: mask yellow ground with navy fade */
+.hero-visual .product-frame{position:relative; overflow:hidden}
+.hero-visual .product-frame::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:0; height:18%;
+  background:linear-gradient(to top, #071526 0%, rgba(7,21,38,0) 100%);
+  pointer-events:none; z-index:2;
+}
+.buy-visual .product-frame::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:0; height:16%;
+  background:linear-gradient(to top, #071526 0%, rgba(7,21,38,0) 100%);
+  pointer-events:none; z-index:2;
+}
+
+/* Marquee */
+.marquee{
+  background:#050d18;
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  overflow:hidden;
+  padding:14px 0;
+}
+.marquee-track{
+  display:flex; width:max-content;
+  animation: ywr-marquee 28s linear infinite;
+}
+.marquee-seq{
+  display:flex; align-items:center; gap:28px;
+  padding-right:28px;
+  white-space:nowrap;
+}
+.m-item{
+  display:inline-flex; align-items:center; gap:10px;
+  color:#fff; font-family:"Bricolage Grotesque",Lato,sans-serif;
+  font-weight:800; font-size:13px; letter-spacing:.08em;
+}
+.m-ico{
+  width:10px; height:10px; border-radius:50%;
+  background:#25649F; box-shadow:0 0 0 3px rgba(37,100,159,.25);
+  flex:0 0 auto;
+}
+@keyframes ywr-marquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+@media (prefers-reduced-motion: reduce){
+  .marquee-track{animation:none}
+}
+
+/* WHY section */
+.why-dad{
+  background:#050d18; color:#fff;
+  padding:48px 20px 40px;
+  text-align:center;
+}
+.why-inner{max-width:720px; margin:0 auto}
+.why-dad h2{
+  font-family:"Bricolage Grotesque",Lato,sans-serif;
+  font-weight:800; font-size:clamp(28px,5vw,40px);
+  letter-spacing:-.02em; line-height:1.05; margin:0 0 16px;
+  text-transform:uppercase;
+}
+.why-dad .why-w{color:#fff}
+.why-dad .why-rest{color:#25649F}
+.why-dad p{
+  font-size:clamp(16px,2.4vw,18px); font-weight:600;
+  line-height:1.45; color:#EAF2FA; margin:0 0 10px;
+}
+
+@media (max-width:640px){
+  .buy{padding-bottom:130px !important}
+  .kits{gap:6px !important}
+  .kit{padding:10px 8px 10px !important}
+  .kit-name{font-size:12.5px !important}
+  .kit-price{font-size:18px !important}
+  .kit-tag{font-size:11.5px !important}
+  .kit-covers img{max-height:48px}
+}
 </style>
 </head>
 <body>
 <div class="draft">Draft mockup · not live · v5 Mars order</div>
 <section aria-label="Product headline" class="hero" id="top">
-<div class="hero-grid"><p class="trust">
-<span aria-hidden="true" class="stars">★★★★★</span>
-<span>4.56/5</span><span class="sep">·</span>
-<span>270,000+</span><span class="sep">·</span>
-<span>Best-selling series</span>
-</p><p class="hero-hook">Terrified you're not ready?</p><h1><span class="h1-line">Feel ready for fatherhood</span><span class="h1-line">in under 2 hours</span></h1><div class="hero-visual">
+<div class="hero-grid"><p class="trust"><span class="stars">★★★★★</span><span> 4.56/5 · 214 reviews</span></p><p class="hero-hook">TERRIFIED YOU'RE NOT READY?</p><h1><span class="h1-line">Feel ready for fatherhood</span><span class="h1-line">in under 2 hours</span></h1><div class="hero-visual">
 <div class="product-frame">
-<div aria-label="#1 Best Seller on Amazon" class="bestseller-badge">
-<span class="bs-top">#1</span>
-<span class="bs-mid">BEST SELLER</span>
-<span class="bs-bot">on Amazon</span>
-</div>
-<img alt="You Will Rock as a Dad and You Will Rock as a Mom book mockup on sky background" height="960" src="assets/hero-dad-mom-mockup.png" width="960"/></div>
+<svg class="bestseller-badge" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200" width="140" height="140" role="img" aria-label="#1 Best Seller on Amazon — Dad + Mom books">
+  <defs>
+    <radialGradient id="bsGlow1" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#3BA3E0"/>
+      <stop offset="55%" stop-color="#25649F"/>
+      <stop offset="100%" stop-color="#0A1A2E"/>
+    </radialGradient>
+    <filter id="bsOuterGlow1" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#3BA3E0" flood-opacity="0.85"/>
+    </filter>
+    <path id="topArc1" d="M 28,100 A 72,72 0 0 1 172,100" fill="none"/>
+    <path id="botArc1" d="M 172,100 A 72,72 0 0 1 28,100" fill="none"/>
+  </defs>
+  <circle cx="100" cy="100" r="94" fill="url(#bsGlow1)" filter="url(#bsOuterGlow1)"/>
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#7EC8F0" stroke-width="2.5" opacity="0.9"/>
+  <circle cx="100" cy="100" r="78" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <text fill="#FFFFFF" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="13" font-weight="800" letter-spacing="2.5">
+    <textPath xlink:href="#topArc1" href="#topArc1" startOffset="50%" text-anchor="middle">#1 BEST SELLER</textPath>
+  </text>
+  <text fill="#FFFFFF" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.8">
+    <textPath xlink:href="#botArc1" href="#botArc1" startOffset="50%" text-anchor="middle">DAD + MOM BOOKS</textPath>
+  </text>
+  <text x="100" y="108" text-anchor="middle" fill="#7EC8F0" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="56" font-weight="800">#1</text>
+  <text x="100" y="132" text-anchor="middle" fill="#FFFFFF" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="11" font-weight="800" letter-spacing="1.5">ON AMAZON</text>
+  <circle cx="38" cy="100" r="3" fill="#7EC8F0"/>
+  <circle cx="162" cy="100" r="3" fill="#7EC8F0"/>
+</svg><img alt="You Will Rock as a Dad and You Will Rock as a Mom book mockup on sky background" height="960" src="assets/hero-dad-mom-mockup.png" width="960"/></div>
 </div><ul class="checks">
 <li><span aria-hidden="true" class="mark">✓</span><span>A guide for each of you. Yes, Dad too.</span></li>
 <li><span aria-hidden="true" class="mark">✓</span><span>Short chapters you’ll actually finish tonight.</span></li>
 <li><span aria-hidden="true" class="mark">✓</span><span>FREE Dad eBook + 3 workbooks with every kit.</span></li>
 </ul><div class="hero-cta-wrap"><a class="cta" href="#buy">Get the Dad + Mom Kit · $28 →</a></div></div>
 </section>
+<section aria-label="Benefits" class="marquee" id="benefits-marquee">
+<div class="marquee-track">
+<div class="marquee-seq">
+<span class="m-item"><i aria-hidden="true" class="m-ico"></i>SHORT CHAPTERS</span>
+<span class="m-item"><i aria-hidden="true" class="m-ico"></i>FINISH TONIGHT</span>
+<span class="m-item"><i aria-hidden="true" class="m-ico"></i>KNOW YOUR JOB</span>
+<span class="m-item"><i aria-hidden="true" class="m-ico"></i>SUPPORT HER</span>
+<span class="m-item"><i aria-hidden="true" class="m-ico"></i>HOSPITAL BAG READY</span>
+<span class="m-item"><i aria-hidden="true" class="m-ico"></i>FIRST-WEEK TEAM PLAN</span>
+<span class="m-item"><i aria-hidden="true" class="m-ico"></i>270,000+ FAMILIES</span>
+</div>
+<div aria-hidden="true" class="marquee-seq">
+<span class="m-item"><i aria-hidden="true" class="m-ico"></i>SHORT CHAPTERS</span>
+<span class="m-item"><i aria-hidden="true" class="m-ico"></i>FINISH TONIGHT</span>
+<span class="m-item"><i aria-hidden="true" class="m-ico"></i>KNOW YOUR JOB</span>
+<span class="m-item"><i aria-hidden="true" class="m-ico"></i>SUPPORT HER</span>
+<span class="m-item"><i aria-hidden="true" class="m-ico"></i>HOSPITAL BAG READY</span>
+<span class="m-item"><i aria-hidden="true" class="m-ico"></i>FIRST-WEEK TEAM PLAN</span>
+<span class="m-item"><i aria-hidden="true" class="m-ico"></i>270,000+ FAMILIES</span>
+</div>
+</div>
+</section>
+<section class="why-dad" id="why-dad">
+<div class="why-inner">
+<h2><span class="why-w">WHY</span> <span class="why-rest">YOU WILL ROCK AS A DAD?</span></h2>
+<p>Short chapters that tell you what she’s going through — and your job on the big day.</p>
+<p>Includes the free Hospital Pack and First-Week Team Plan printables so you walk in ready.</p>
+</div>
+</section>
 <section aria-label="Case studies" class="case" id="case">
 <div class="case-inner">
 <p class="kicker">Real couples · Real books</p>
-<h2>See How 270,000+ Couples Are Feeling Ready for Baby</h2>
+<h2>See How <span class="hi">270,000+</span> Couples Are Feeling Ready for Baby</h2>
 <div class="banner">Over <span>270,000</span> parents refused to wing it</div>
 <div class="section-label">Customers with the books</div>
 <div class="ugc-grid"><figure class="ugc"><img alt="Dad with Dad Vol. 1" loading="eager" src="assets/proof/grid/01-dad-beard-dadvol1.jpg"/><figcaption>Dad with Dad Vol. 1</figcaption></figure>
@@ -547,12 +865,33 @@ h1 .bold{display:block;color:var(--white);font-size:1.08em}
 <div class="buy-inner">
 <div class="buy-visual">
 <div class="product-frame">
-<div aria-label="#1 Best Seller on Amazon" class="bestseller-badge">
-<span class="bs-top">#1</span>
-<span class="bs-mid">BEST SELLER</span>
-<span class="bs-bot">on Amazon</span>
-</div>
-<img alt="Dad + Mom Kit book mockup" src="assets/hero-dad-mom-mockup.png"/></div>
+<svg class="bestseller-badge" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200" width="140" height="140" role="img" aria-label="#1 Best Seller on Amazon — Dad + Mom books">
+  <defs>
+    <radialGradient id="bsGlow2" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#3BA3E0"/>
+      <stop offset="55%" stop-color="#25649F"/>
+      <stop offset="100%" stop-color="#0A1A2E"/>
+    </radialGradient>
+    <filter id="bsOuterGlow2" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#3BA3E0" flood-opacity="0.85"/>
+    </filter>
+    <path id="topArc2" d="M 28,100 A 72,72 0 0 1 172,100" fill="none"/>
+    <path id="botArc2" d="M 172,100 A 72,72 0 0 1 28,100" fill="none"/>
+  </defs>
+  <circle cx="100" cy="100" r="94" fill="url(#bsGlow2)" filter="url(#bsOuterGlow2)"/>
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#7EC8F0" stroke-width="2.5" opacity="0.9"/>
+  <circle cx="100" cy="100" r="78" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <text fill="#FFFFFF" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="13" font-weight="800" letter-spacing="2.5">
+    <textPath xlink:href="#topArc2" href="#topArc2" startOffset="50%" text-anchor="middle">#1 BEST SELLER</textPath>
+  </text>
+  <text fill="#FFFFFF" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.8">
+    <textPath xlink:href="#botArc2" href="#botArc2" startOffset="50%" text-anchor="middle">DAD + MOM BOOKS</textPath>
+  </text>
+  <text x="100" y="108" text-anchor="middle" fill="#7EC8F0" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="56" font-weight="800">#1</text>
+  <text x="100" y="132" text-anchor="middle" fill="#FFFFFF" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="11" font-weight="800" letter-spacing="1.5">ON AMAZON</text>
+  <circle cx="38" cy="100" r="3" fill="#7EC8F0"/>
+  <circle cx="162" cy="100" r="3" fill="#7EC8F0"/>
+</svg><img alt="Dad + Mom Kit book mockup" src="assets/hero-dad-mom-mockup.png"/></div>
 </div>
 <div class="buy-copy">
 <h2>Feel ready for <span class="hi">fatherhood</span> in under 2 hours</h2>
@@ -565,7 +904,7 @@ h1 .bold{display:block;color:var(--white);font-size:1.08em}
 <li><span class="mark">✓</span><span>Dad Vol. 1 + Mom Vol. 1 — pregnancy &amp; birth, both of you</span></li>
 <li><span class="mark">✓</span><span>Free Dad eBook so you can start tonight</span></li>
 <li><span class="mark">✓</span><span>3 free workbooks: hospital pack, support pack, first-week team plan</span></li>
-<li><span class="mark">✓</span><span>Read by 270,000+ couples · Best-selling series</span></li>
+<li><span class="mark">✓</span><span>4.56/5 from 214 reviews · Judge.me</span></li>
 </ul>
 <p class="kits-legend">How ready do you want to be?</p><div aria-label="How ready do you want to be?" class="kits" role="radiogroup">
 <label class="kit">
