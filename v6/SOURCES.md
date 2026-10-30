@@ -1,16 +1,33 @@
-# v6 sources (2026-10-30 America/Los_Angeles)
+# v5 sources (2026-10-30 America/Los_Angeles)
 
-Preview only. Never published to live Shopify.
+## Brand blue
+- **Rock Blue `#25649F`** — YWR Brand Bible `/workspace/brand-bible/YWR-Brand-Bible.html` (`--rock:#25649F`, labeled “Rock Blue” on-site).
 
-## Changes from v5
-- Removed dark stats intro block; kept "Real couples · Real books" trust line.
-- Added OG live sections (Rock Blue #25649F / white / navy): #1 gift + As featured in (after reviews), pregnancy prep comparison, See inside, product page images, footer.
-- Sticky CTA slimmed; body bottom padding reserved; hidden while hero CTA or buy block in view.
-- New 1080×1080 Mars-style gallery PNGs in assets/gallery/.
+## Hero mockup
+- Lexi attachment copied to `assets/hero-dad-mom-mockup.png` (Dad + Mom books on sky/yellow background).
 
-## Live copy / assets
-- Control snapshot: /workspace/landing-dad-ab/control-live.html (read-only).
-- CDN assets under assets/og/ from youwillrockbundles.com.
-- Freebies: Dad’s Hospital Pack, Mom’s Support Pack, First-Week Team Plan; eBook $10.95; printables $9.95 from live gift rows.
-- See inside quotes word-for-word from live page.
-- Zach on-screen caption from assets/proof/grid/06-zach-dadvol1.jpg.
+## Judge.me reviews
+- Same 10 verbatim reviews as `assets/proof/reviews-picked.json` (Carrie Ford first), originally from live Judge.me on the Dad split-test PDP.
+
+## Amazon — attempted live fetch
+### Product pages (succeeded — rating counts only)
+| Book | ASIN | URL | Avg (as listed) | Count (as listed) |
+|---|---|---|---|---|
+| You Will Rock As a Dad! | B0BNGRZC4Z | https://www.amazon.com/dp/B0BNGRZC4Z | **4.6 out of 5** | **1,157 global ratings** |
+| You Will Rock As a Mom! | B0FRXQ7CTR | https://www.amazon.com/dp/B0FRXQ7CTR | **4.4 out of 5** | **309 global ratings** |
+
+Fetched via Playwright Chromium against the live product pages. Saved HTML under `amazon-fetch/`.
+
+### Individual review quotes (BLOCKED — none added to the mockup)
+Attempted:
+- `https://www.amazon.com/product-reviews/B0BNGRZC4Z` → **Sign in** wall
+- `https://www.amazon.com/gp/aw/reviews/B0BNGRZC4Z` → **Sign in** wall
+- `https://www.amazon.com/hz/reviews-render/ajax/lazy/reviews?...` → empty/error
+- Product-page medley AJAX `POST /hz/reviews-render/ajax/medley-reviews/get/` → **404**
+- 0 `[data-hook="review"]` nodes after scrolling the product page
+
+**No Amazon review bodies, names, or “Amazon Verified Purchase” tags were invented or pasted.** The case-study wall shows only the exact Amazon rating averages/counts above, plus Judge.me quotes. Raw fetch notes: `amazon-fetch/amazon-ratings-only.json`.
+
+## Live kit prices (sticky + buy tiles)
+From live PDP offer tiles: Dad Vol. 1 **$21**, Dad + Mom **$28**, Pregnancy & Beyond **$49**, Bump to Potty **$69**.
+Source: https://youwillrockbundles.com/products/show-up-for-her-feel-ready-for-fatherhood-in-under-2-hours-paperback-copy
