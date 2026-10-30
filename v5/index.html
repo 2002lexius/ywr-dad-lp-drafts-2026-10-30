@@ -768,14 +768,265 @@ body{padding-bottom:110px !important}
   letter-spacing:.06em; font-size:clamp(12px,2vw,14px);
 }
 
+
+/* === Lexi polish round === */
+
+/* Trust: no stray highlight box behind stars */
+.trust .stars, #top .trust .stars{
+  background:transparent !important;
+  box-shadow:none !important;
+  padding:0 !important;
+  border:none !important;
+  color:#25649F !important;
+}
+.trust-score{color:#fff;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.trust-vol{color:#fff;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+
+/* Strikethrough compare-at */
+.kit-was{
+  text-decoration:line-through;
+  color:#8A93A3 !important;
+  font-size:13px;font-weight:600;
+  margin-left:4px;
+}
+.kit-price-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+
+/* OUR PICK not clipped */
+.kit{overflow:visible !important; position:relative}
+.kits{overflow:visible !important; padding-top:12px}
+.our-pick{
+  position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+  background:#25649F !important; color:#fff !important;
+  font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  padding:3px 10px; border-radius:999px; white-space:nowrap; z-index:3;
+}
+
+/* Badge fully inside frame — no left clip */
+.product-frame{overflow:visible !important}
+.hero-visual .product-frame{overflow:visible !important}
+.hero-visual .product-frame::after,
+.buy-visual .product-frame::after{
+  border-radius:0 0 18px 18px;
+  z-index:1;
+}
+svg.bestseller-badge, .bestseller-badge{
+  position:absolute !important;
+  left:8px !important;
+  top:8px !important;
+  right:auto !important;
+  width:120px !important; height:120px !important;
+  transform:rotate(-8deg) !important;
+  z-index:5 !important;
+  overflow:visible !important;
+  filter:drop-shadow(0 0 10px rgba(59,163,224,.55));
+}
+.buy-visual svg.bestseller-badge{
+  width:110px !important; height:110px !important;
+  left:8px !important; top:8px !important;
+}
+@media (max-width:640px){
+  svg.bestseller-badge, .bestseller-badge{
+    width:84px !important; height:84px !important;
+    left:6px !important; top:6px !important;
+  }
+}
+
+/* Sticky slim — one button, hidden until past hero CTA */
+.sticky, .sticky-slim{
+  background:transparent !important;
+  border:none !important;
+  box-shadow:none !important;
+  padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px)) !important;
+  display:flex !important; justify-content:center; align-items:center;
+  min-height:0 !important;
+  transition:transform .25s ease, opacity .25s ease;
+}
+.sticky.is-hidden{
+  transform:translateY(110%);
+  opacity:0;
+  pointer-events:none;
+}
+.sticky .tag, .sticky .tiers{display:none !important}
+.sticky-cta, .sticky a.sticky-cta, .sticky a{
+  display:flex !important; align-items:center; justify-content:center;
+  width:min(520px,100%);
+  height:56px !important; min-height:56px !important; max-height:56px !important;
+  padding:0 20px !important;
+  background:#25649F !important; color:#fff !important;
+  font-family:"Bricolage Grotesque",Lato,sans-serif;
+  font-weight:800; font-size:16px; letter-spacing:.02em;
+  text-transform:none; text-decoration:none;
+  border-radius:12px !important;
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+}
+body{padding-bottom:0 !important}
+body.has-sticky-pad{padding-bottom:72px !important}
+
+/* Stats intro (Mars-style) */
+.stats-intro{
+  background:#050d18; color:#fff;
+  text-align:center; padding:48px 20px 36px;
+  max-width:820px; margin:0 auto;
+}
+.stats-frame{
+  display:inline-flex; align-items:stretch; gap:0;
+  position:relative; margin:0 auto 28px; padding:18px 28px;
+}
+.stats-frame::before, .stats-frame::after{
+  content:""; position:absolute; width:18px; height:18px;
+  border-color:#25649F; border-style:solid;
+}
+.stats-frame::before{left:0; top:0; border-width:2px 0 0 2px}
+.stats-frame::after{right:0; bottom:0; border-width:0 2px 2px 0}
+.stats-frame .stat{padding:0 22px; text-align:center}
+.stat-num{
+  font-family:"Bricolage Grotesque",Lato,sans-serif;
+  font-weight:800; font-size:clamp(28px,5vw,36px); line-height:1; color:#fff;
+}
+.stat-label{
+  margin-top:6px; font-size:11px; font-weight:700; letter-spacing:.12em;
+  color:#fff; text-transform:uppercase; opacity:.9;
+}
+.stat-div{width:1px; background:#25649F; align-self:stretch; margin:4px 0}
+.stats-h2{
+  font-family:"Bricolage Grotesque",Lato,sans-serif;
+  font-weight:800; font-size:clamp(26px,4.5vw,40px);
+  letter-spacing:-.02em; line-height:1.1; text-transform:uppercase;
+  color:#fff; margin:0 0 16px;
+}
+.stats-h2 .hi{color:#25649F !important}
+.stats-lead{
+  font-size:clamp(15px,2.2vw,17px); font-weight:600; line-height:1.45;
+  color:#EAF2FA; max-width:560px; margin:0 auto 14px;
+}
+.stats-rating{
+  color:#fff; font-weight:700; font-size:15px; margin:0 0 20px;
+}
+.stats-rating .stars{color:#25649F; letter-spacing:1px; margin-right:6px}
+.stats-cta{display:inline-flex; margin:0 auto}
+
+/* UGC marquee */
+.ugc-marquee-wrap{padding:8px 0 28px; background:#050d18}
+.ugc-heading{
+  text-align:center; color:#25649F !important;
+  font-family:"Bricolage Grotesque",Lato,sans-serif;
+  font-weight:800; font-size:clamp(18px,3.2vw,26px);
+  letter-spacing:.04em; text-transform:uppercase;
+  margin:18px 16px 16px;
+}
+.ugc-heading-reviews{margin-top:28px; margin-bottom:8px}
+.ugc-marquee{overflow:hidden; width:100%}
+.ugc-track{display:flex; width:max-content; animation:ugc-marquee 45s linear infinite}
+.ugc-marquee:hover .ugc-track{animation-play-state:paused}
+.ugc-seq{display:flex; gap:14px; padding-right:14px}
+.ugc-card{
+  flex:0 0 auto; width:180px; margin:0;
+  background:#0b1524; border-radius:14px; overflow:hidden;
+  position:relative; border:1px solid rgba(255,255,255,.08);
+}
+.ugc-card img{width:180px; height:220px; object-fit:cover; display:block}
+.ugc-card figcaption{
+  display:flex; flex-direction:column; gap:2px;
+  padding:8px 10px 10px; color:#fff;
+}
+.ugc-name{font-size:12px; font-weight:700; line-height:1.25}
+.ugc-tag{
+  font-size:9px; font-weight:800; letter-spacing:.08em;
+  color:#7EC8F0; text-transform:uppercase;
+}
+.ugc-card-vid .play{
+  position:absolute; left:50%; top:42%; transform:translate(-50%,-50%);
+  width:42px; height:42px; border-radius:50%;
+  background:rgba(37,100,159,.92); color:#fff;
+  display:grid; place-items:center; font-size:14px;
+  box-shadow:0 4px 14px rgba(0,0,0,.35);
+}
+@keyframes ugc-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .ugc-track{animation:none}
+  .ugc-marquee{overflow-x:auto; -webkit-overflow-scrolling:touch}
+  .ugc-track{width:auto}
+  .ugc-seq[aria-hidden="true"]{display:none}
+}
+/* swipeable always on touch */
+.ugc-marquee{-webkit-overflow-scrolling:touch}
+
+/* Mobile hero fold tighten (400x565) */
+@media (max-width:640px){
+  #top, .hero{padding-top:10px !important; padding-bottom:8px !important}
+  .hero-grid{gap:6px 0 !important; row-gap:6px !important}
+  .trust{margin:0 0 2px !important; font-size:12px !important}
+  .hero-hook{
+    font-size:26px !important; line-height:1.05 !important;
+    margin:0 0 2px !important; letter-spacing:.02em;
+  }
+  .hero-grid h1, #top h1{
+    font-size:34px !important; line-height:1.05 !important;
+    margin:0 0 4px !important;
+  }
+  .hero-grid h1 .h1-line{font-size:inherit !important}
+  .hero-visual{margin:0 !important}
+  .hero-visual .product-frame img{border-radius:0 !important}
+  .checks{margin:6px 0 6px !important; gap:4px !important}
+  .checks li{font-size:13px !important}
+  .hero-cta-wrap{margin:4px 0 8px !important; padding-bottom:4px !important}
+  .cta{padding:12px 18px !important; font-size:15px !important}
+  .hero-note{font-size:11px !important; margin-top:4px !important}
+  /* marquee under hero can stay */
+  .marquee{padding:10px 0 !important}
+  .why-dad{padding:28px 16px 24px !important}
+  .why-dad h2{font-size:24px !important}
+}
+@media (max-width:420px){
+  .hero-grid h1, #top h1{font-size:34px !important}
+  .hero-hook{font-size:24px !important}
+}
+
+/* Hide old ugc-grid styles collision */
+.case .banner{display:none !important}
+
+/* Fold: fit trust+hook+H1+full mockup into ~565px at 400w */
+@media (max-width:420px){
+  #top{padding-top:6px !important; padding-bottom:0 !important}
+  .hero-grid{gap:4px 0 !important; row-gap:4px !important}
+  .trust{font-size:11.5px !important; gap:6px !important; margin:0 !important}
+  .trust .stars{font-size:12px !important}
+  .hero-hook{
+    font-size:26px !important; line-height:1.02 !important;
+    margin:0 !important; padding:0 12px !important;
+  }
+  .hero-grid h1, #top h1{
+    font-size:34px !important; line-height:1.02 !important;
+    margin:0 0 2px !important; padding:0 12px !important;
+  }
+  .hero-visual{margin:0 !important; padding:0 !important}
+  .hero-visual .product-frame{
+    max-height:300px !important;
+  }
+  .hero-visual .product-frame img{
+    max-height:300px !important;
+    width:100% !important;
+    height:auto !important;
+    object-fit:contain !important;
+    object-position:center top !important;
+  }
+  svg.bestseller-badge, .bestseller-badge{
+    width:72px !important; height:72px !important;
+    left:8px !important; top:8px !important;
+  }
+  /* checks + CTA can sit just under fold */
+  .checks{margin:8px 12px 4px !important}
+  .hero-cta-wrap{margin:4px 12px 8px !important}
+}
+
 </style>
 </head>
 <body>
 <div class="draft">Draft mockup · not live · v5 Mars order</div>
 <section aria-label="Product headline" class="hero" id="top">
-<div class="hero-grid"><p class="trust"><span class="stars" aria-hidden="true">★★★★★</span><span class="trust-score">4.56/5</span><span class="trust-vol">270,000+ HAPPY FAMILIES</span></p><p class="hero-hook">TERRIFIED YOU'RE NOT READY?</p><h1><span class="h1-line">Feel ready for fatherhood</span><span class="h1-line">in under 2 hours</span></h1><div class="hero-visual">
+<div class="hero-grid"><p class="trust"><span aria-hidden="true" class="stars">★★★★★</span><span class="trust-score">4.6/5 ON AMAZON</span><span class="trust-vol">270,000+ HAPPY FAMILIES</span></p><p class="hero-hook">TERRIFIED YOU'RE NOT READY?</p><h1><span class="h1-line">Feel ready for fatherhood</span><span class="h1-line">in under 2 hours</span></h1><div class="hero-visual">
 <div class="product-frame">
-<svg class="bestseller-badge" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200" width="140" height="140" role="img" aria-label="#1 Best Seller on Amazon — Dad + Mom books">
+<svg class="bestseller-badge" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200" width="140" height="140" role="img" aria-label="#1 Best Seller on Amazon">
   <defs>
     <radialGradient id="bsGlow1" cx="50%" cy="40%" r="60%">
       <stop offset="0%" stop-color="#3BA3E0"/>
@@ -786,7 +1037,6 @@ body{padding-bottom:110px !important}
       <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#3BA3E0" flood-opacity="0.85"/>
     </filter>
     <path id="topArc1" d="M 28,100 A 72,72 0 0 1 172,100" fill="none"/>
-    <path id="botArc1" d="M 172,100 A 72,72 0 0 1 28,100" fill="none"/>
   </defs>
   <circle cx="100" cy="100" r="94" fill="url(#bsGlow1)" filter="url(#bsOuterGlow1)"/>
   <circle cx="100" cy="100" r="88" fill="none" stroke="#7EC8F0" stroke-width="2.5" opacity="0.9"/>
@@ -794,13 +1044,8 @@ body{padding-bottom:110px !important}
   <text fill="#FFFFFF" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="13" font-weight="800" letter-spacing="2.5">
     <textPath xlink:href="#topArc1" href="#topArc1" startOffset="50%" text-anchor="middle">#1 BEST SELLER</textPath>
   </text>
-  <text fill="#FFFFFF" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.8">
-    <textPath xlink:href="#botArc1" href="#botArc1" startOffset="50%" text-anchor="middle">DAD + MOM BOOKS</textPath>
-  </text>
-  <text x="100" y="108" text-anchor="middle" fill="#7EC8F0" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="56" font-weight="800">#1</text>
-  <text x="100" y="132" text-anchor="middle" fill="#FFFFFF" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="11" font-weight="800" letter-spacing="1.5">ON AMAZON</text>
-  <circle cx="38" cy="100" r="3" fill="#7EC8F0"/>
-  <circle cx="162" cy="100" r="3" fill="#7EC8F0"/>
+  <text x="100" y="112" text-anchor="middle" fill="#7EC8F0" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="58" font-weight="800">#1</text>
+  <text x="100" y="138" text-anchor="middle" fill="#FFFFFF" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="12" font-weight="800" letter-spacing="1.8">ON AMAZON</text>
 </svg><img alt="You Will Rock as a Dad and You Will Rock as a Mom book mockup on sky background" height="960" src="assets/hero-dad-mom-mockup.png" width="960"/></div>
 </div><ul class="checks">
 <li><span aria-hidden="true" class="mark">✓</span><span>A guide for each of you. Yes, Dad too.</span></li>
@@ -840,29 +1085,44 @@ body{padding-bottom:110px !important}
 <section aria-label="Case studies" class="case" id="case">
 <div class="case-inner">
 <p class="kicker">Real couples · Real books</p>
-<h2>See How <span class="hi">270,000+</span> Couples Are Feeling Ready for Baby</h2>
-<div class="banner">Over <span>270,000</span> parents refused to wing it</div>
+
+<div class="stats-intro">
+<div aria-label="Key stats" class="stats-frame">
+<div class="stat">
+<div class="stat-num">270,000+</div>
+<div class="stat-label">HAPPY FAMILIES</div>
+</div>
+<div aria-hidden="true" class="stat-div"></div>
+<div class="stat">
+<div class="stat-num">#1</div>
+<div class="stat-label">BEST SELLER ON AMAZON</div>
+</div>
+</div>
+<h2 class="stats-h2">JOIN <span class="hi">270,000+</span> FAMILIES WHO REFUSED TO WING IT</h2>
+<p class="stats-lead">Wondering if it will work for you? These parents didn’t just tell us. They sent photos, videos and reviews. See for yourself.</p>
+<p class="stats-rating"><span aria-hidden="true" class="stars">★★★★★</span> 4.6/5 on Amazon · 1,157 ratings</p>
+<a class="cta stats-cta" href="#buy">Get the Dad + Mom Kit</a>
+</div>
+
+
 <div class="section-label">Customers with the books</div>
-<div class="ugc-grid"><figure class="ugc"><img alt="Dad with Dad Vol. 1" loading="eager" src="assets/proof/grid/01-dad-beard-dadvol1.jpg"/><figcaption>Dad with Dad Vol. 1</figcaption></figure>
-<figure class="ugc"><img alt="Reader with The Dad Picture Book" loading="eager" src="assets/proof/grid/02-woman-picturebook.jpg"/><figcaption>Reader with The Dad Picture Book</figcaption></figure>
-<figure class="ugc"><img alt="Karsen with Dad Vol. 1" loading="eager" src="assets/proof/grid/03-karsen-dadvol1.jpg"/><figcaption>Karsen with Dad Vol. 1</figcaption></figure>
-<figure class="ugc"><img alt="Derek with Dad Vol. 1" loading="eager" src="assets/proof/grid/04-derek-dadvol1.jpg"/><figcaption>Derek with Dad Vol. 1</figcaption></figure>
-<figure class="ugc"><img alt="Reader with Dad Vol. 1" loading="eager" src="assets/proof/grid/05-ivanka-dadvol1.jpg"/><figcaption>Reader with Dad Vol. 1</figcaption></figure>
-<figure class="ugc"><img alt="Zach with Dad Vol. 1" loading="eager" src="assets/proof/grid/06-zach-dadvol1.jpg"/><figcaption>Zach with Dad Vol. 1</figcaption></figure>
-<figure class="ugc"><img alt="Zach with Mom Vol. 1" loading="eager" src="assets/proof/grid/07-zach-momvol1.jpg"/><figcaption>Zach with Mom Vol. 1</figcaption></figure>
-<figure class="ugc"><img alt="Dad + Mom Vol. 1" loading="eager" src="assets/proof/grid/08-lexi-dual.jpg"/><figcaption>Dad + Mom Vol. 1</figcaption></figure>
-<figure class="ugc"><img alt="Derek with Dad Vol. 1" loading="eager" src="assets/proof/grid/09-derek-xmas22b.jpg"/><figcaption>Derek with Dad Vol. 1</figcaption></figure>
-<figure class="ugc"><img alt="Dad Vol. 1 in hand" loading="eager" src="assets/proof/grid/10-ugc-hand-dadvol1.jpg"/><figcaption>Dad Vol. 1 in hand</figcaption></figure>
-<figure class="ugc"><img alt="Karsen with Dad Vol. 1" loading="eager" src="assets/proof/grid/11-karsen-20.jpg"/><figcaption>Karsen with Dad Vol. 1</figcaption></figure>
-<figure class="ugc"><img alt="Reader with Dad Vol. 1" loading="eager" src="assets/proof/grid/12-ivanka-009.jpg"/><figcaption>Reader with Dad Vol. 1</figcaption></figure></div>
+
+<div class="ugc-marquee-wrap">
+<h3 class="ugc-heading">REAL DADS. REAL BOOKS. READY FOR BABY.</h3>
+<div aria-label="Customer photos and videos" class="ugc-marquee">
+<div class="ugc-track">
+<div class="ugc-seq"><figure class="ugc-card"><img alt="Dad with Dad Vol. 1" loading="eager" src="assets/proof/grid/01-dad-beard-dadvol1.jpg"/><figcaption><span class="ugc-name">Dad with Dad Vol. 1</span><span class="ugc-tag">VERIFIED CUSTOMER</span></figcaption></figure><figure class="ugc-card"><img alt="Reader with The Dad Picture Book" loading="eager" src="assets/proof/grid/02-woman-picturebook.jpg"/><figcaption><span class="ugc-name">Reader with The Dad Picture Book</span><span class="ugc-tag">VERIFIED CUSTOMER</span></figcaption></figure><figure class="ugc-card"><img alt="Karsen with Dad Vol. 1" loading="eager" src="assets/proof/grid/03-karsen-dadvol1.jpg"/><figcaption><span class="ugc-name">Karsen with Dad Vol. 1</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card"><img alt="Derek with Dad Vol. 1" loading="eager" src="assets/proof/grid/04-derek-dadvol1.jpg"/><figcaption><span class="ugc-name">Derek with Dad Vol. 1</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card"><img alt="Reader with Dad Vol. 1" loading="eager" src="assets/proof/grid/05-ivanka-dadvol1.jpg"/><figcaption><span class="ugc-name">Reader with Dad Vol. 1</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card"><img alt="Zach with Dad Vol. 1" loading="eager" src="assets/proof/grid/06-zach-dadvol1.jpg"/><figcaption><span class="ugc-name">Zach with Dad Vol. 1</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card"><img alt="Zach with Mom Vol. 1" loading="eager" src="assets/proof/grid/07-zach-momvol1.jpg"/><figcaption><span class="ugc-name">Zach with Mom Vol. 1</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card"><img alt="Dad + Mom Vol. 1" loading="eager" src="assets/proof/grid/08-lexi-dual.jpg"/><figcaption><span class="ugc-name">Dad + Mom Vol. 1</span></figcaption></figure><figure class="ugc-card"><img alt="Derek with Dad Vol. 1" loading="eager" src="assets/proof/grid/09-derek-xmas22b.jpg"/><figcaption><span class="ugc-name">Derek with Dad Vol. 1</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card"><img alt="Dad Vol. 1 in hand" loading="eager" src="assets/proof/grid/10-ugc-hand-dadvol1.jpg"/><figcaption><span class="ugc-name">Dad Vol. 1 in hand</span><span class="ugc-tag">VERIFIED CUSTOMER</span></figcaption></figure><figure class="ugc-card"><img alt="Karsen with Dad Vol. 1" loading="eager" src="assets/proof/grid/11-karsen-20.jpg"/><figcaption><span class="ugc-name">Karsen with Dad Vol. 1</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card"><img alt="Reader with Dad Vol. 1" loading="eager" src="assets/proof/grid/12-ivanka-009.jpg"/><figcaption><span class="ugc-name">Reader with Dad Vol. 1</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card ugc-card-vid"><img alt="Derek" loading="eager" src="assets/proof/video/v1-derek.jpg"/><span aria-hidden="true" class="play">▶</span><figcaption><span class="ugc-name">Derek</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card ugc-card-vid"><img alt="Ivanka" loading="eager" src="assets/proof/video/v2-ivanka.jpg"/><span aria-hidden="true" class="play">▶</span><figcaption><span class="ugc-name">Ivanka</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card ugc-card-vid"><img alt="Karsen" loading="eager" src="assets/proof/video/v3-karsen.jpg"/><span aria-hidden="true" class="play">▶</span><figcaption><span class="ugc-name">Karsen</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card ugc-card-vid"><img alt="Lyndsey" loading="eager" src="assets/proof/video/v4-lyndsey.jpg"/><span aria-hidden="true" class="play">▶</span><figcaption><span class="ugc-name">Lyndsey</span><span class="ugc-tag">CREATOR</span></figcaption></figure></div>
+<div aria-hidden="true" class="ugc-seq"><figure class="ugc-card"><img alt="Dad with Dad Vol. 1" loading="eager" src="assets/proof/grid/01-dad-beard-dadvol1.jpg"/><figcaption><span class="ugc-name">Dad with Dad Vol. 1</span><span class="ugc-tag">VERIFIED CUSTOMER</span></figcaption></figure><figure class="ugc-card"><img alt="Reader with The Dad Picture Book" loading="eager" src="assets/proof/grid/02-woman-picturebook.jpg"/><figcaption><span class="ugc-name">Reader with The Dad Picture Book</span><span class="ugc-tag">VERIFIED CUSTOMER</span></figcaption></figure><figure class="ugc-card"><img alt="Karsen with Dad Vol. 1" loading="eager" src="assets/proof/grid/03-karsen-dadvol1.jpg"/><figcaption><span class="ugc-name">Karsen with Dad Vol. 1</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card"><img alt="Derek with Dad Vol. 1" loading="eager" src="assets/proof/grid/04-derek-dadvol1.jpg"/><figcaption><span class="ugc-name">Derek with Dad Vol. 1</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card"><img alt="Reader with Dad Vol. 1" loading="eager" src="assets/proof/grid/05-ivanka-dadvol1.jpg"/><figcaption><span class="ugc-name">Reader with Dad Vol. 1</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card"><img alt="Zach with Dad Vol. 1" loading="eager" src="assets/proof/grid/06-zach-dadvol1.jpg"/><figcaption><span class="ugc-name">Zach with Dad Vol. 1</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card"><img alt="Zach with Mom Vol. 1" loading="eager" src="assets/proof/grid/07-zach-momvol1.jpg"/><figcaption><span class="ugc-name">Zach with Mom Vol. 1</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card"><img alt="Dad + Mom Vol. 1" loading="eager" src="assets/proof/grid/08-lexi-dual.jpg"/><figcaption><span class="ugc-name">Dad + Mom Vol. 1</span></figcaption></figure><figure class="ugc-card"><img alt="Derek with Dad Vol. 1" loading="eager" src="assets/proof/grid/09-derek-xmas22b.jpg"/><figcaption><span class="ugc-name">Derek with Dad Vol. 1</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card"><img alt="Dad Vol. 1 in hand" loading="eager" src="assets/proof/grid/10-ugc-hand-dadvol1.jpg"/><figcaption><span class="ugc-name">Dad Vol. 1 in hand</span><span class="ugc-tag">VERIFIED CUSTOMER</span></figcaption></figure><figure class="ugc-card"><img alt="Karsen with Dad Vol. 1" loading="eager" src="assets/proof/grid/11-karsen-20.jpg"/><figcaption><span class="ugc-name">Karsen with Dad Vol. 1</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card"><img alt="Reader with Dad Vol. 1" loading="eager" src="assets/proof/grid/12-ivanka-009.jpg"/><figcaption><span class="ugc-name">Reader with Dad Vol. 1</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card ugc-card-vid"><img alt="Derek" loading="eager" src="assets/proof/video/v1-derek.jpg"/><span aria-hidden="true" class="play">▶</span><figcaption><span class="ugc-name">Derek</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card ugc-card-vid"><img alt="Ivanka" loading="eager" src="assets/proof/video/v2-ivanka.jpg"/><span aria-hidden="true" class="play">▶</span><figcaption><span class="ugc-name">Ivanka</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card ugc-card-vid"><img alt="Karsen" loading="eager" src="assets/proof/video/v3-karsen.jpg"/><span aria-hidden="true" class="play">▶</span><figcaption><span class="ugc-name">Karsen</span><span class="ugc-tag">CREATOR</span></figcaption></figure><figure class="ugc-card ugc-card-vid"><img alt="Lyndsey" loading="eager" src="assets/proof/video/v4-lyndsey.jpg"/><span aria-hidden="true" class="play">▶</span><figcaption><span class="ugc-name">Lyndsey</span><span class="ugc-tag">CREATOR</span></figcaption></figure></div>
+</div>
+</div>
+<h3 class="ugc-heading ugc-heading-reviews">DON’T TAKE OUR WORD FOR IT. TAKE THEIRS.</h3>
+</div>
+
 <div class="section-label">From TikTok &amp; creator videos</div>
-<div class="vid-row"><button aria-label="Derek" class="vid" type="button"><img alt="" loading="eager" src="assets/proof/video/v1-derek.jpg"/><span aria-hidden="true" class="play"></span><span class="vlabel">Derek</span></button>
-<button aria-label="Ivanka" class="vid" type="button"><img alt="" loading="eager" src="assets/proof/video/v2-ivanka.jpg"/><span aria-hidden="true" class="play"></span><span class="vlabel">Ivanka</span></button>
-<button aria-label="Karsen" class="vid" type="button"><img alt="" loading="eager" src="assets/proof/video/v3-karsen.jpg"/><span aria-hidden="true" class="play"></span><span class="vlabel">Karsen</span></button>
-<button aria-label="Lyndsey" class="vid" type="button"><img alt="" loading="eager" src="assets/proof/video/v4-lyndsey.jpg"/><span aria-hidden="true" class="play"></span><span class="vlabel">Lyndsey</span></button></div>
+
 <div class="section-label">What readers say · Judge.me · gift reviews first</div>
 <div class="rev-grid"><article class="rev"><img alt="You Will Rock book cover" class="rev-photo" src="assets/dad-vol1.jpg"/><div class="rev-body"><div aria-label="5 out of 5" class="rev-stars">★★★★★</div><h3>Did you just find out you’re about to be a Dad? You need to read this!</h3><p>“Such a great read and full of great information. I bought this book for myself when my wife told me we are having a baby. I also bought her the “You will Rock as a Mom.” Great books; recommend for any first time parents.”</p><div class="rev-who"><strong>Carrie Ford</strong> · Judge.me</div></div></article><article class="rev"><img alt="You Will Rock book cover" class="rev-photo" src="assets/mom-vol1.jpg"/><div class="rev-body"><div aria-label="5 out of 5" class="rev-stars">★★★★★</div><h3>Extremely relatable</h3><p>“I’m very grateful that my fiancé bought me this when I mentioned it. There are aspects of how I was raised that made me very hesitant toward having children and this book encapsulates many insecurities very well. I’d recommend to anyone feeling anxious or insecure about being a parent.”</p><div class="rev-who"><strong>DM</strong> · Judge.me</div></div></article><article class="rev"><img alt="You Will Rock book cover" class="rev-photo" src="assets/dad-vol1.jpg"/><div class="rev-body"><div aria-label="5 out of 5" class="rev-stars">★★★★★</div><h3>Worth the money</h3><p>“My boyfriend has actually taken the time to read this book despite busy military life. He has learned so much from it! Very happy with my purchase”</p><div class="rev-who"><strong>Marisa Daboll</strong> · Judge.me</div></div></article><article class="rev"><img alt="You Will Rock book cover" class="rev-photo" src="assets/mom-vol1.jpg"/><div class="rev-body"><div aria-label="5 out of 5" class="rev-stars">★★★★★</div><h3>Hey, Soon-To-Be Dads! This Book Rocks!</h3><p>“Liking the book so far! My wife (and mother-to-be) got this book for me as a very thoughtful Father's Day gift! Halfway through, this book has provided lots of practical advice accompanied by light-hearted commentary. To any soon-to-be parents reading this review, good luck on your journey!”</p><div class="rev-who"><strong>Joseph Studioso-Marcus</strong> · Judge.me</div></div></article><article class="rev"><img alt="You Will Rock book cover" class="rev-photo" src="assets/dad-vol1.jpg"/><div class="rev-body"><div aria-label="5 out of 5" class="rev-stars">★★★★★</div><h3>For Future Dads</h3><p>“As a mom, I picked this up hoping it would help my husband feel more prepared for our first baby, and I ended up reading much of it myself. I honestly wish more dads would read a book like this. What I appreciated most is that it doesn't just focus on diapers and hospital bags. It encourages fathers to understand what their partner is experiencing physically and emotionally, while also acknowledging that becoming a dad can be scary. I loved seeing the emphasis on communication, supporting your partner, looking after mental health, and becoming an active parent instead of just a bystander. It feels like the author genuinely wants dads to be confident, involved, and compassionate from pregnancy onward. The writing is approachable and often funny, which makes it an easy read. There were several moments that made me smile because they captured the reality of pregnancy surprisingly well. As a mom, it was reassuring to see my experience validated while also giving practical advice to help fathers know what they can actually do. It's not perfect. Some of the humor and sports analogies won't resonate with everyone, and there are a few moments where the tone leans a little more casual than I personally prefer. There are also occasional product mentions that felt a bit promotional. None of those things took away from the overall value of the book for me. Overall, this is a thoughtful, encouraging guide that helps first-time dads become true partners during pregnancy and beyond. If you're expecting your first baby—or you're a mom looking for a book to give your husband—I would absolutely recommend this one. It offers practical advice, reassurance, and plenty of reminders that showing up with love and support matters more than being perfect.”</p><div class="rev-who"><strong>Lauren Arditti</strong> · Judge.me</div></div></article><article class="rev"><img alt="You Will Rock book cover" class="rev-photo" src="assets/mom-vol1.jpg"/><div class="rev-body"><div aria-label="5 out of 5" class="rev-stars">★★★★★</div><h3>So helpful for new dads</h3><p>“This is such a helpful tool for new dads navigating parenthood! I loved that it not only had helpful information on navigating all the different stages of having a new child, but also how you can support your partner through all the trials on childbirth and recovery”</p><div class="rev-who"><strong>Madison</strong> · Judge.me</div></div></article><article class="rev"><img alt="You Will Rock book cover" class="rev-photo" src="assets/dad-vol1.jpg"/><div class="rev-body"><div aria-label="5 out of 5" class="rev-stars">★★★★★</div><h3>Great read</h3><p>“I bought both of these books for my partner and he loves them!”</p><div class="rev-who"><strong>Taylor</strong> · Judge.me</div></div></article><article class="rev"><img alt="You Will Rock book cover" class="rev-photo" src="assets/mom-vol1.jpg"/><div class="rev-body"><div aria-label="5 out of 5" class="rev-stars">★★★★★</div><h3>Pre-Baby</h3><p>“i’m a father-to-be coming in Feb 2027 and this book has been amazing i’m not even a reader but ever since i got the news i been tryna invest in as much as i can to becoming a great father and husband at the same time.. this book has made me feel like im talking to a friend about what’s going on! i recommending it so far into reading! i’ll lyk post baby if the book helped 😅🥴😂”</p><div class="rev-who"><strong>Alexis Schneider</strong> · Judge.me</div></div></article><article class="rev"><img alt="You Will Rock book cover" class="rev-photo" src="assets/dad-vol1.jpg"/><div class="rev-body"><div aria-label="4 out of 5" class="rev-stars">★★★★☆</div><h3>Detailed Information</h3><p>“This book is very detailed in everything first-time fathers need to know. There are different sections that explain what to do though each stage. It’s a good book for the wife to get the husband.”</p><div class="rev-who"><strong>EatMorChikin</strong> · Judge.me</div></div></article><article class="rev"><img alt="You Will Rock book cover" class="rev-photo" src="assets/mom-vol1.jpg"/><div class="rev-body"><div aria-label="5 out of 5" class="rev-stars">★★★★★</div><h3>Solid Practical Advice</h3><p>“This is a helpful and encouraging guide for first-time dads who may be feeling overwhelmed by pregnancy and all the changes that come with it. I appreciated how the author walks through each stage of pregnancy, explains what dads can expect, and offers practical ways to support their partner. The sections on prenatal visits, birth plans, postpartum challenges, and preparing for the baby's arrival were especially useful. The writing is easy to follow, and the advice is realistic without being intimidating. A solid resource for any man getting ready to become a father.”</p><div class="rev-who"><strong>Amazon Customer</strong> · Judge.me</div></div></article></div>
-<p class="rev-note">4.56/5 from 214 reviews · Photos on review cards are book covers (Judge.me has no customer review photos for this product).</p>
+<p class="rev-note">4.6/5 on Amazon · Photos on review cards are book covers (Judge.me has no customer review photos for this product).</p>
 </div>
 </section>
 <section aria-label="Timeline" class="timeline">
@@ -882,7 +1142,7 @@ body{padding-bottom:110px !important}
 <div class="buy-inner">
 <div class="buy-visual">
 <div class="product-frame">
-<svg class="bestseller-badge" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200" width="140" height="140" role="img" aria-label="#1 Best Seller on Amazon — Dad + Mom books">
+<svg class="bestseller-badge" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200" width="140" height="140" role="img" aria-label="#1 Best Seller on Amazon">
   <defs>
     <radialGradient id="bsGlow2" cx="50%" cy="40%" r="60%">
       <stop offset="0%" stop-color="#3BA3E0"/>
@@ -893,7 +1153,6 @@ body{padding-bottom:110px !important}
       <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#3BA3E0" flood-opacity="0.85"/>
     </filter>
     <path id="topArc2" d="M 28,100 A 72,72 0 0 1 172,100" fill="none"/>
-    <path id="botArc2" d="M 172,100 A 72,72 0 0 1 28,100" fill="none"/>
   </defs>
   <circle cx="100" cy="100" r="94" fill="url(#bsGlow2)" filter="url(#bsOuterGlow2)"/>
   <circle cx="100" cy="100" r="88" fill="none" stroke="#7EC8F0" stroke-width="2.5" opacity="0.9"/>
@@ -901,27 +1160,16 @@ body{padding-bottom:110px !important}
   <text fill="#FFFFFF" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="13" font-weight="800" letter-spacing="2.5">
     <textPath xlink:href="#topArc2" href="#topArc2" startOffset="50%" text-anchor="middle">#1 BEST SELLER</textPath>
   </text>
-  <text fill="#FFFFFF" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.8">
-    <textPath xlink:href="#botArc2" href="#botArc2" startOffset="50%" text-anchor="middle">DAD + MOM BOOKS</textPath>
-  </text>
-  <text x="100" y="108" text-anchor="middle" fill="#7EC8F0" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="56" font-weight="800">#1</text>
-  <text x="100" y="132" text-anchor="middle" fill="#FFFFFF" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="11" font-weight="800" letter-spacing="1.5">ON AMAZON</text>
-  <circle cx="38" cy="100" r="3" fill="#7EC8F0"/>
-  <circle cx="162" cy="100" r="3" fill="#7EC8F0"/>
+  <text x="100" y="112" text-anchor="middle" fill="#7EC8F0" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="58" font-weight="800">#1</text>
+  <text x="100" y="138" text-anchor="middle" fill="#FFFFFF" font-family="Bricolage Grotesque, Lato, Arial, sans-serif" font-size="12" font-weight="800" letter-spacing="1.8">ON AMAZON</text>
 </svg><img alt="Dad + Mom Kit book mockup" src="assets/hero-dad-mom-mockup.png"/></div>
 </div>
 <div class="buy-copy">
 <h2>Feel ready for <span class="hi">fatherhood</span> in under 2 hours</h2>
-<p class="pb-stars">
-<span aria-hidden="true" class="s">★★★★★</span>
-<strong>4.56/5</strong>
-<span>· 214 reviews</span>
-</p>
 <ul class="pb-checks">
 <li><span class="mark">✓</span><span>Dad Vol. 1 + Mom Vol. 1 — pregnancy &amp; birth, both of you</span></li>
 <li><span class="mark">✓</span><span>Free Dad eBook so you can start tonight</span></li>
 <li><span class="mark">✓</span><span>3 free workbooks: hospital pack, support pack, first-week team plan</span></li>
-<li><span class="mark">✓</span><span>4.56/5 from 214 reviews · Judge.me</span></li>
 </ul>
 <p class="kits-legend">How ready do you want to be?</p><div aria-label="How ready do you want to be?" class="kits" role="radiogroup">
 <label class="kit">
@@ -934,10 +1182,7 @@ body{padding-bottom:110px !important}
 <strong class="kit-name">Dad Volume 1</strong>
 <span class="kit-sub">1 book · pregnancy &amp; birth</span>
 </span>
-<span class="kit-price-row">
-<span class="kit-price">$21</span>
-<span class="kit-save">Save $7</span>
-</span>
+<span class="kit-price-row"><span class="kit-price">$21</span><span class="kit-was">$28</span><span class="kit-save">Save $7</span></span>
 <span class="kit-tag">Walk into the delivery room ready.</span>
 </label>
 <label class="kit pick">
@@ -951,10 +1196,7 @@ body{padding-bottom:110px !important}
 <strong class="kit-name">Dad + Mom Kit</strong>
 <span class="kit-sub">2 books · Dad eBook</span>
 </span>
-<span class="kit-price-row">
-<span class="kit-price">$28</span>
-<span class="kit-save">Save $9</span>
-</span>
+<span class="kit-price-row"><span class="kit-price">$28</span><span class="kit-was">$37</span><span class="kit-save">Save $9</span></span>
 <span class="kit-tag">Pregnancy and birth, both of you.</span>
 </label>
 <label class="kit">
@@ -971,10 +1213,7 @@ body{padding-bottom:110px !important}
 <strong class="kit-name">Pregnancy &amp; Beyond Kit</strong>
 <span class="kit-sub">4 books · bump to toddler</span>
 </span>
-<span class="kit-price-row">
-<span class="kit-price">$49</span>
-<span class="kit-save">Save $63</span>
-</span>
+<span class="kit-price-row"><span class="kit-price">$49</span><span class="kit-was">$112</span><span class="kit-save">Save $63</span></span>
 <span class="kit-tag">Bump to the toddler years.</span>
 </label>
 <label class="kit">
@@ -992,10 +1231,7 @@ body{padding-bottom:110px !important}
 <strong class="kit-name">Bump to Potty Kit</strong>
 <span class="kit-sub">6 books · every freebie</span>
 </span>
-<span class="kit-price-row">
-<span class="kit-price">$69</span>
-<span class="kit-save">Save $81</span>
-</span>
+<span class="kit-price-row"><span class="kit-price">$69</span><span class="kit-was">$150</span><span class="kit-save">Save $81</span></span>
 <span class="kit-tag">Bump to potty. Done.</span>
 </label>
 </div>
@@ -1004,15 +1240,20 @@ body{padding-bottom:110px !important}
 </div>
 </div>
 </section>
-<div aria-label="Bundle savings bar" class="sticky" role="contentinfo">
-<div class="tag">The more they get, the more they save</div>
-<div class="tiers">
-<span class="tier">Dad Vol. 1 <strong>$21</strong></span>
-<span class="tier">Dad + Mom <strong>$28</strong></span>
-<span class="tier">Pregnancy &amp; Beyond <strong>$49</strong></span>
-<span class="tier">Bump to Potty <strong>$69</strong></span>
-</div>
-<a href="#buy">Get the kit</a>
-</div>
-</body>
+<div aria-label="Get the kit" class="sticky sticky-slim is-hidden" role="contentinfo"><a class="sticky-cta" href="#buy">Get the Dad + Mom Kit</a></div>
+<script>
+(function(){
+  var sticky = document.querySelector('.sticky');
+  var heroCta = document.querySelector('.hero-cta-wrap') || document.querySelector('#top .cta');
+  if(!sticky || !heroCta) return;
+  function sync(){
+    var bottom = heroCta.getBoundingClientRect().bottom;
+    if(bottom < 0){ sticky.classList.remove('is-hidden'); document.body.classList.add('has-sticky-pad'); }
+    else { sticky.classList.add('is-hidden'); document.body.classList.remove('has-sticky-pad'); }
+  }
+  sync();
+  window.addEventListener('scroll', sync, {passive:true});
+  window.addEventListener('resize', sync);
+})();
+</script></body>
 </html>
