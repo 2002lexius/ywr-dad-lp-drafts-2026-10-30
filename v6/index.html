@@ -863,11 +863,20 @@ svg.bestseller-badge, .bestseller-badge{
   box-shadow:0 6px 18px rgba(0,0,0,.28);
 }
 /* Always reserve space so sticky never covers H1 / timeline cards */
-body{padding-bottom:64px !important}
-body.has-sticky-pad{padding-bottom:64px !important}
+html{scroll-padding-bottom:80px}
+body{padding-bottom:80px !important}
+body.has-sticky-pad{padding-bottom:80px !important}
 @media (max-width:640px){
-  body, body.has-sticky-pad{padding-bottom:68px !important}
+  html{scroll-padding-bottom:88px}
+  body, body.has-sticky-pad{padding-bottom:88px !important}
 }
+/* Extra clearance on sections that sit under sticky while scrolling */
+.timeline, .why-dad, .case, .prep, .inside, .pstrip, .v6-block, .pgal{
+  scroll-margin-bottom:88px;
+}
+.timeline .tl-inner, .case-inner, .v6-inner{padding-bottom:8px}
+.timeline{padding-bottom:36px !important}
+
 
 /* Stats intro (Mars-style) */
 .stats-intro{
