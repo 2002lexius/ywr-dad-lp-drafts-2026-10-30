@@ -751,12 +751,29 @@ body{padding-bottom:110px !important}
   .kit-tag{font-size:11.5px !important}
   .kit-covers img{max-height:48px}
 }
+
+/* Hero trust: Mars-style volume line */
+.hero-grid .trust, #top .trust{
+  display:flex; flex-wrap:wrap; align-items:center; gap:8px;
+  font-size:clamp(13px,2.2vw,15px); font-weight:700; color:#fff;
+}
+.hero-grid .trust .stars, #top .trust .stars{
+  color:#25649F !important; letter-spacing:1px; font-size:1.05em;
+}
+.hero-grid .trust .trust-score, #top .trust .trust-score{
+  color:#fff; font-weight:700;
+}
+.hero-grid .trust .trust-vol, #top .trust .trust-vol{
+  color:#fff; font-weight:800; text-transform:uppercase;
+  letter-spacing:.06em; font-size:clamp(12px,2vw,14px);
+}
+
 </style>
 </head>
 <body>
 <div class="draft">Draft mockup · not live · v5 Mars order</div>
 <section aria-label="Product headline" class="hero" id="top">
-<div class="hero-grid"><p class="trust"><span class="stars">★★★★★</span><span> 4.56/5 · 214 reviews</span></p><p class="hero-hook">TERRIFIED YOU'RE NOT READY?</p><h1><span class="h1-line">Feel ready for fatherhood</span><span class="h1-line">in under 2 hours</span></h1><div class="hero-visual">
+<div class="hero-grid"><p class="trust"><span class="stars" aria-hidden="true">★★★★★</span><span class="trust-score">4.56/5</span><span class="trust-vol">270,000+ HAPPY FAMILIES</span></p><p class="hero-hook">TERRIFIED YOU'RE NOT READY?</p><h1><span class="h1-line">Feel ready for fatherhood</span><span class="h1-line">in under 2 hours</span></h1><div class="hero-visual">
 <div class="product-frame">
 <svg class="bestseller-badge" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200" width="140" height="140" role="img" aria-label="#1 Best Seller on Amazon — Dad + Mom books">
   <defs>
